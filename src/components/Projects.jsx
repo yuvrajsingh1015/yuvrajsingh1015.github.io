@@ -17,7 +17,7 @@ export default function Projects() {
               {project.description}
             </p>
 
-            <ul className="mt-5 flex flex-wrap gap-2">
+            <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1">
               {project.tags.map((tag) => (
                 <li key={tag} className="font-mono text-xs text-accent">
                   {tag}
