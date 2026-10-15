@@ -10,7 +10,6 @@ export const profile = {
   location: "Saarbrücken, DE",
   status: "Open to working student roles",
   headline: ["Systems", "Software"],
-  marquee: ["Embedded Systems", "Software Engineering", "Software Architecture", "Compilers", "Saarland University"],
 };
 
 export const about = {

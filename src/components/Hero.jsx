@@ -138,33 +138,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <Marquee items={profile.marquee} />
     </section>
-  );
-}
-
-function Marquee({ items }) {
-  const row = [...items, ...items];
-  return (
-    <div
-      aria-hidden="true"
-      className="border-y border-line/70 bg-bg/40 py-4 backdrop-blur-sm [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
-    >
-      <div className="flex w-max motion-safe:animate-marquee hover:[animation-play-state:paused]">
-        {[0, 1].map((copy) => (
-          <div key={copy} className="flex shrink-0">
-            {row.map((item, i) => (
-              <span
-                key={`${copy}-${i}`}
-                className="flex items-center gap-8 pr-8 font-mono text-sm uppercase tracking-widest text-muted"
-              >
-                {item}
-                <span className="text-accent">✦</span>
-              </span>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }
