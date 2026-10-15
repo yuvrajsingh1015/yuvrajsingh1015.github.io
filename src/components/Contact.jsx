@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { profile } from "../data";
 import SectionHeading from "./SectionHeading";
+import Reveal from "./Reveal";
 
 const iconProps = {
   width: 20,
@@ -33,9 +34,24 @@ export const GitHubIcon = () => (
 );
 
 const channels = [
-  { label: "email", text: profile.email, href: `mailto:${profile.email}`, Icon: MailIcon },
-  { label: "linkedin", text: "yuvraj-singh", href: profile.linkedin, Icon: LinkedInIcon },
-  { label: "github", text: "yuvrajsingh1015", href: profile.github, Icon: GitHubIcon },
+  {
+    label: "email",
+    text: profile.email,
+    href: `mailto:${profile.email}`,
+    Icon: MailIcon,
+  },
+  {
+    label: "linkedin",
+    text: "yuvraj-singh",
+    href: profile.linkedin,
+    Icon: LinkedInIcon,
+  },
+  {
+    label: "github",
+    text: "yuvrajsingh1015",
+    href: profile.github,
+    Icon: GitHubIcon,
+  },
 ];
 
 const emptyForm = { name: "", email: "", message: "" };
@@ -92,11 +108,11 @@ export default function Contact() {
     <section id="contact" className="mx-auto max-w-6xl px-6 py-24">
       <SectionHeading number="04" label="contact" title="Get in touch" />
 
-      <div className="grid gap-10 md:grid-cols-[2fr_3fr]">
+      <Reveal className="grid gap-10 md:grid-cols-[2fr_3fr]">
         <div>
           <p className="text-lg leading-relaxed text-muted">
-            I'm looking for a working student position in software development or IT.
-            Send me a message or reach out directly.
+            I'm looking for a working student position in software development
+            or IT. Send me a message or reach out directly.
           </p>
 
           <ul className="mt-8 space-y-3">
@@ -112,7 +128,9 @@ export default function Contact() {
                     <Icon />
                   </span>
                   <span className="min-w-0">
-                    <span className="block font-mono text-xs text-subtle">{label}</span>
+                    <span className="block font-mono text-xs text-subtle">
+                      {label}
+                    </span>
                     <span className="block truncate text-sm text-body group-hover:text-fg">
                       {text}
                     </span>
@@ -144,7 +162,9 @@ export default function Contact() {
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             <label className="block">
-              <span className="mb-1 block font-mono text-xs text-subtle">name</span>
+              <span className="mb-1 block font-mono text-xs text-subtle">
+                name
+              </span>
               <input
                 type="text"
                 value={form.name}
@@ -154,11 +174,17 @@ export default function Contact() {
                 className={fieldClass}
                 aria-invalid={Boolean(errors.name)}
               />
-              {errors.name && <span className="mt-1 block text-xs text-red-500">{errors.name}</span>}
+              {errors.name && (
+                <span className="mt-1 block text-xs text-red-500">
+                  {errors.name}
+                </span>
+              )}
             </label>
 
             <label className="block">
-              <span className="mb-1 block font-mono text-xs text-subtle">email</span>
+              <span className="mb-1 block font-mono text-xs text-subtle">
+                email
+              </span>
               <input
                 type="email"
                 value={form.email}
@@ -168,12 +194,18 @@ export default function Contact() {
                 className={fieldClass}
                 aria-invalid={Boolean(errors.email)}
               />
-              {errors.email && <span className="mt-1 block text-xs text-red-500">{errors.email}</span>}
+              {errors.email && (
+                <span className="mt-1 block text-xs text-red-500">
+                  {errors.email}
+                </span>
+              )}
             </label>
           </div>
 
           <label className="mt-4 block">
-            <span className="mb-1 block font-mono text-xs text-subtle">message</span>
+            <span className="mb-1 block font-mono text-xs text-subtle">
+              message
+            </span>
             <textarea
               rows={5}
               value={form.message}
@@ -182,7 +214,11 @@ export default function Contact() {
               className={`${fieldClass} resize-y`}
               aria-invalid={Boolean(errors.message)}
             />
-            {errors.message && <span className="mt-1 block text-xs text-red-500">{errors.message}</span>}
+            {errors.message && (
+              <span className="mt-1 block text-xs text-red-500">
+                {errors.message}
+              </span>
+            )}
           </label>
 
           <div className="mt-5 flex flex-wrap items-center gap-4">
@@ -193,11 +229,13 @@ export default function Contact() {
               send message →
             </button>
             <span className="text-xs text-subtle" aria-live="polite">
-              {sent ? "Your email app should open now." : "Opens your email app, pre-filled."}
+              {sent
+                ? "Your email app should open now."
+                : "Opens your email app, pre-filled."}
             </span>
           </div>
         </form>
-      </div>
+      </Reveal>
     </section>
   );
 }

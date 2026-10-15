@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 function shouldShow() {
   try {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return false;
     return sessionStorage.getItem("booted") !== "1";
   } catch {
     return false;

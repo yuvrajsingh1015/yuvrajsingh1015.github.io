@@ -1,5 +1,6 @@
 import { skills } from "../data";
 import SectionHeading from "./SectionHeading";
+import Reveal from "./Reveal";
 
 export default function Skills() {
   return (
@@ -7,8 +8,12 @@ export default function Skills() {
       <SectionHeading number="02" label="skills" title="Skills" />
 
       <div className="space-y-8">
-        {skills.map((group) => (
-          <div key={group.group} className="grid gap-3 sm:grid-cols-[10rem_1fr]">
+        {skills.map((group, i) => (
+          <Reveal
+            key={group.group}
+            delay={i * 120}
+            className="grid gap-3 sm:grid-cols-[10rem_1fr]"
+          >
             <h3 className="font-mono text-sm text-fg0">{group.group}</h3>
             <ul className="flex flex-wrap gap-2">
               {group.items.map((skill) => (
@@ -20,7 +25,7 @@ export default function Skills() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
