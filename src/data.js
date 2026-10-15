@@ -12,31 +12,53 @@ export const profile = {
 };
 
 export const about = {
+  lead: "I like understanding how systems work all the way down, from how the hardware runs code to how large software is put together.",
   text: [
-    "I'm a computer science student at Saarland University (138 of 180 credits completed) with a minor in physics.",
-    "I learn best by building: through intensive project-based work I've designed, implemented and tested complete software systems, from a compiler to an AI-powered code assistant.",
-    "I'm currently looking for a working student position in software development or IT.",
+    "I'm a computer science student at Saarland University with a minor in physics. My interest in hardware started with the System Architecture course and grew through Embedded Systems.",
+    "I learn best by building. In team and solo projects I've designed, implemented and tested complete systems: a compiler for a subset of C, a restaurant simulation built with a student team, and an AI assistant that searches entire codebases.",
+    "I'm now looking for a working student position in software development or IT.",
   ],
-  focus: [
-    {
-      title: "Embedded Systems",
-      text: "Courses in system architecture and embedded systems. I like understanding how software behaves close to the hardware.",
-    },
-    {
-      title: "Software Engineering",
-      text: "Team projects with Git, code reviews and automated testing, built to be maintainable.",
-    },
-    {
-      title: "Software Architecture",
-      text: "Structuring larger systems into clear components, from compiler phases to simulation design.",
-    },
+  facts: [
+    ["studying", "B.Sc. Computer Science"],
+    ["university", "Saarland University"],
+    ["minor", "Physics"],
+    ["progress", "138 / 180 CP"],
+    ["based in", "Saarbrücken"],
+    ["languages", "German C1 · English C1"],
   ],
 };
 
 export const skills = [
-  { group: "Languages", items: ["Java", "Kotlin", "C", "Python", "Julia", "OCaml", "SQL", "MIPS Assembly"] },
-  { group: "Web & AI", items: ["Django", "Streamlit", "RAG", "Embeddings", "FAISS", "OpenAI API"] },
-  { group: "Tools", items: ["Git", "GitLab", "Gradle", "Docker", "Vagrant", "VirtualBox", "Linux", "macOS"] },
+  {
+    group: "Languages",
+    items: [
+      "Java",
+      "Kotlin",
+      "C",
+      "Python",
+      "Julia",
+      "OCaml",
+      "SQL",
+      "MIPS Assembly",
+    ],
+  },
+  {
+    group: "Web & AI",
+    items: ["Django", "Streamlit", "RAG", "Embeddings", "FAISS", "OpenAI API"],
+  },
+  {
+    group: "Tools",
+    items: [
+      "Git",
+      "GitLab",
+      "Gradle",
+      "Docker",
+      "Vagrant",
+      "VirtualBox",
+      "Linux",
+      "macOS",
+    ],
+  },
 ];
 
 export const projects = [
