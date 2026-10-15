@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { profile } from "../data";
+import Oscilloscope from "./Oscilloscope";
 
 function Line({ children, delay, className = "" }) {
   return (
@@ -65,7 +66,8 @@ export default function Hero() {
           "radial-gradient(550px circle at var(--mx, 70%) var(--my, 40%), color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%)",
       }}
     >
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6">
+      <Oscilloscope />
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col px-6">
         <div
           className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-muted motion-safe:animate-fade sm:text-sm"
           style={{ animationDelay: "200ms" }}
@@ -137,7 +139,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }
