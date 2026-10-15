@@ -10,7 +10,7 @@ export default function Projects() {
         {projects.map((project) => (
           <article
             key={project.title}
-            className="flex flex-col rounded-lg border border-line bg-card p-6 transition-colors hover:border-accent/50"
+            className="flex flex-col rounded-lg border border-line bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60 hover:bg-card-hover"
           >
             <h3 className="text-lg font-semibold text-fg">{project.title}</h3>
             <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">

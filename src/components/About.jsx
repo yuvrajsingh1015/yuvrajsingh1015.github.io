@@ -16,7 +16,7 @@ export default function About() {
         {about.focus.map((item) => (
           <div
             key={item.title}
-            className="rounded-lg border border-line bg-card p-5 transition-colors hover:border-accent/50"
+            className="rounded-lg border border-line bg-card p-5 transition duration-200 hover:-translate-y-1 hover:border-accent/60 hover:bg-card-hover"
           >
             <h3 className="font-mono text-sm text-accent">{item.title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted">{item.text}</p>

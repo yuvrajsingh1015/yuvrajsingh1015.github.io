@@ -20,13 +20,13 @@ export default function Hero() {
       <div className="mt-10 flex flex-wrap gap-4 font-mono text-sm">
         <a
           href="#projects"
-          className="rounded-md border border-accent px-4 py-2 text-accent transition-colors hover:bg-accent hover:text-bg"
+          className="rounded-md border border-accent bg-accent/5 px-4 py-2 text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-accent/15"
         >
           view projects →
         </a>
         <a
           href={profile.cv}
-          className="rounded-md border border-line px-4 py-2 text-body transition-colors hover:border-subtle hover:text-fg"
+          className="rounded-md border border-line bg-card px-4 py-2 text-body transition duration-200 hover:-translate-y-0.5 hover:border-subtle hover:bg-card-hover hover:text-fg"
         >
           download cv
         </a>

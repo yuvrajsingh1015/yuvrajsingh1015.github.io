@@ -9,9 +9,10 @@
   --muted: #a1a1aa;
   --subtle: #71717a;
   --line: #27272a;
-  --card: rgb(24 24 27 / 0.4);
+  --card: rgb(24 24 27 / 0.15);
+  --card-hover: rgb(39 39 42 / 0.35);
   --accent: #2dd4bf;
-  --dot: rgb(255 255 255 / 0.06);
+  --dot: rgb(255 255 255 / 0.1);
   color-scheme: dark;
 }
 
@@ -22,9 +23,10 @@ html.light {
   --muted: #52525b;
   --subtle: #71717a;
   --line: #e4e4e7;
-  --card: rgb(255 255 255 / 0.7);
+  --card: rgb(255 255 255 / 0.35);
+  --card-hover: rgb(255 255 255 / 0.7);
   --accent: #0d9488;
-  --dot: rgb(0 0 0 / 0.07);
+  --dot: rgb(0 0 0 / 0.11);
   color-scheme: light;
 }
 
@@ -36,6 +38,7 @@ html.light {
   --color-subtle: var(--subtle);
   --color-line: var(--line);
   --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
   --color-accent: var(--accent);
 }
 
