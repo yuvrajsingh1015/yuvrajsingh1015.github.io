@@ -63,7 +63,7 @@ export default function Hero() {
       className="relative flex min-h-screen flex-col overflow-hidden pt-24"
       style={{
         backgroundImage:
-          "radial-gradient(420px circle at var(--mx, 70%) var(--my, 40%), color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%)",
+          "radial-gradient(320px circle at var(--mx, 70%) var(--my, 40%), color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%)",
       }}
     >
       <Oscilloscope />
@@ -74,11 +74,8 @@ export default function Hero() {
         >
           <span>
             <span className="text-accent">~/yuvraj $ whoami</span>
-            <span className="ml-3 font-normal text-muted">{profile.name}</span>
           </span>
-          <span className="flex items-center gap-2">
-            {profile.location}
-          </span>
+          <span className="flex items-center gap-2">{profile.location}</span>
         </div>
 
         <div
@@ -92,7 +89,7 @@ export default function Hero() {
           <h1 className="py-12 font-semibold leading-[0.9] tracking-[-0.05em] text-fg [font-size:clamp(3.75rem,14vw,12rem)]">
             <Line delay={300}>{first}</Line>
             <Line delay={450} className="pl-[0.6em]">
-              <span className="font-light text-accent">&amp;</span> {second}
+              {second}
               <span
                 aria-hidden="true"
                 className="ml-[0.08em] inline-block h-[0.7em] w-[0.08em] translate-y-[0.04em] bg-accent motion-safe:animate-blink"
@@ -108,7 +105,6 @@ export default function Hero() {
           >
             <div>
               <p className="max-w-md text-lg leading-relaxed text-muted">
-                I'm <span className="text-fg">{profile.name}</span>.{" "}
                 {profile.tagline}
               </p>
               <div className="mt-6 flex flex-wrap gap-3 font-mono text-sm">

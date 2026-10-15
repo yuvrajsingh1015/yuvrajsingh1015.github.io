@@ -8,7 +8,7 @@ export const profile = {
   cv: "/cv.pdf",
   role: "Software & Embedded Systems",
   location: "Saarbrücken, DE",
-  headline: ["Systems", "Software"],
+  headline: ["Yuvraj", "Singh"],
 };
 
 export const about = {
