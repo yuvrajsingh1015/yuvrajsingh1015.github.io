@@ -63,7 +63,7 @@ export default function Hero() {
       className="relative flex min-h-screen flex-col overflow-hidden pt-24"
       style={{
         backgroundImage:
-          "radial-gradient(550px circle at var(--mx, 70%) var(--my, 40%), color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%)",
+          "radial-gradient(420px circle at var(--mx, 70%) var(--my, 40%), color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%)",
       }}
     >
       <Oscilloscope />
@@ -72,7 +72,10 @@ export default function Hero() {
           className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-muted motion-safe:animate-fade sm:text-sm"
           style={{ animationDelay: "200ms" }}
         >
-          <span className="text-accent">{`{ ${profile.role.toUpperCase()} }`}</span>
+          <span>
+            <span className="text-accent">~/yuvraj $ whoami</span>
+            <span className="ml-3 font-normal text-muted">{profile.name}</span>
+          </span>
           <span className="flex items-center gap-2">
             {profile.location}
           </span>
