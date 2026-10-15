@@ -2,10 +2,10 @@ import { profile } from "../data";
 
 export default function Hero() {
   return (
-    <section className="mx-auto flex min-h-screen max-w-4xl flex-col justify-center px-6">
+    <section className="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6">
       <p className="font-mono text-sm text-accent">~/yuvraj $ whoami</p>
 
-      <h1 className="mt-4 text-5xl font-semibold tracking-tight text-zinc-50 sm:text-6xl">
+      <h1 className="mt-4 text-5xl font-semibold tracking-tight text-fg sm:text-6xl">
         {profile.name}
         <span
           aria-hidden="true"
@@ -13,7 +13,7 @@ export default function Hero() {
         />
       </h1>
 
-      <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
+      <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
         {profile.tagline}
       </p>
 
@@ -26,7 +26,7 @@ export default function Hero() {
         </a>
         <a
           href={profile.cv}
-          className="rounded-md border border-zinc-700 px-4 py-2 text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-50"
+          className="rounded-md border border-line px-4 py-2 text-body transition-colors hover:border-subtle hover:text-fg"
         >
           download cv
         </a>

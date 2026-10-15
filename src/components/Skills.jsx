@@ -3,18 +3,18 @@ import SectionHeading from "./SectionHeading";
 
 export default function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-4xl px-6 py-24">
+    <section id="skills" className="mx-auto max-w-5xl px-6 py-24">
       <SectionHeading number="02" label="skills" title="Skills" />
 
       <div className="space-y-8">
         {skills.map((group) => (
           <div key={group.group} className="grid gap-3 sm:grid-cols-[10rem_1fr]">
-            <h3 className="font-mono text-sm text-zinc-500">{group.group}</h3>
+            <h3 className="font-mono text-sm text-fg0">{group.group}</h3>
             <ul className="flex flex-wrap gap-2">
               {group.items.map((skill) => (
                 <li
                   key={skill}
-                  className="rounded-md border border-zinc-800 px-3 py-1 font-mono text-xs text-zinc-300"
+                  className="rounded-md border border-line px-3 py-1 font-mono text-xs text-body"
                 >
                   {skill}
                 </li>

@@ -2,11 +2,46 @@
 @import "@fontsource-variable/inter";
 @import "@fontsource-variable/jetbrains-mono";
 
+:root {
+  --bg: #0b0c0e;
+  --fg: #fafafa;
+  --body: #d4d4d8;
+  --muted: #a1a1aa;
+  --subtle: #71717a;
+  --line: #27272a;
+  --card: rgb(24 24 27 / 0.4);
+  --accent: #2dd4bf;
+  --dot: rgb(255 255 255 / 0.06);
+  color-scheme: dark;
+}
+
+html.light {
+  --bg: #f7f7f8;
+  --fg: #18181b;
+  --body: #3f3f46;
+  --muted: #52525b;
+  --subtle: #71717a;
+  --line: #e4e4e7;
+  --card: rgb(255 255 255 / 0.7);
+  --accent: #0d9488;
+  --dot: rgb(0 0 0 / 0.07);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-card: var(--card);
+  --color-accent: var(--accent);
+}
+
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
-  --color-accent: #2dd4bf;
-  --color-bg: #0b0c0e;
   --animate-blink: blink 1s steps(1) infinite;
 
   @keyframes blink {
@@ -20,7 +55,7 @@ html {
 }
 
 body {
-  @apply bg-bg text-zinc-300 font-sans antialiased;
-  background-image: radial-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px);
+  @apply bg-bg text-body font-sans antialiased;
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
   background-size: 22px 22px;
 }

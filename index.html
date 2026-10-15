@@ -10,6 +10,13 @@
 <meta property="og:description" content="Computer science student at Saarland University, focused on embedded systems, software engineering and software architecture." />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#0b0c0e" />
+    <script>
+      try {
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.classList.add("light");
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -3,10 +3,10 @@ import SectionHeading from "./SectionHeading";
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto max-w-4xl px-6 py-24">
+    <section id="about" className="mx-auto max-w-5xl px-6 py-24">
       <SectionHeading number="01" label="about" title="About me" />
 
-      <div className="max-w-2xl space-y-4 text-lg leading-relaxed text-zinc-400">
+      <div className="max-w-2xl space-y-4 text-lg leading-relaxed text-muted">
         {about.text.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
@@ -16,10 +16,10 @@ export default function About() {
         {about.focus.map((item) => (
           <div
             key={item.title}
-            className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5 transition-colors hover:border-accent/50"
+            className="rounded-lg border border-line bg-card p-5 transition-colors hover:border-accent/50"
           >
             <h3 className="font-mono text-sm text-accent">{item.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-400">{item.text}</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted">{item.text}</p>
           </div>
         ))}
       </div>
