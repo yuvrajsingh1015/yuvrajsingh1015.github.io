@@ -1,4 +1,5 @@
-import { projects } from "../data";
+import { profile, projects } from "../data";
+import { GitHubIcon } from "./Contact";
 import SectionHeading from "./SectionHeading";
 
 export default function Projects() {
@@ -37,6 +38,19 @@ export default function Projects() {
             )}
           </article>
         ))}
+      </div>
+
+      <div className="mt-10 flex justify-center">
+        <a
+          href={profile.github}
+          target="_blank"
+          rel="noreferrer"
+          className="group inline-flex items-center gap-3 rounded-md border border-line bg-card px-5 py-3 font-mono text-sm text-body transition duration-200 hover:-translate-y-0.5 hover:border-accent/60 hover:bg-card-hover hover:text-accent"
+        >
+          <GitHubIcon />
+          more on github
+          <span className="transition-transform group-hover:translate-x-1">→</span>
+        </a>
       </div>
     </section>
   );
