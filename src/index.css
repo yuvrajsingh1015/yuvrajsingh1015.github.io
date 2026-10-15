@@ -48,7 +48,6 @@ html.light {
   --animate-blink: blink 1s steps(1) infinite;
   --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   --animate-fade: fade 0.8s ease-out both;
-  --animate-ping-slow: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 
   @keyframes blink {
     50% { opacity: 0; }
@@ -60,9 +59,6 @@ html.light {
   @keyframes fade {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes ping-slow {
-    75%, 100% { transform: scale(2.4); opacity: 0; }
   }
 }
 

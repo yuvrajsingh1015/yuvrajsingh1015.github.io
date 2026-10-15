@@ -74,11 +74,7 @@ export default function Hero() {
         >
           <span className="text-accent">{`{ ${profile.role.toUpperCase()} }`}</span>
           <span className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-accent motion-safe:animate-ping-slow" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
-            {profile.status} · {profile.location}
+            {profile.location}
           </span>
         </div>
 
