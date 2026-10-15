@@ -3,7 +3,7 @@ import SectionHeading from "./SectionHeading";
 
 export default function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-5xl px-6 py-24">
+    <section id="skills" className="mx-auto max-w-6xl px-6 py-24">
       <SectionHeading number="02" label="skills" title="Skills" />
 
       <div className="space-y-8">

@@ -1,36 +1,122 @@
 import { profile } from "../data";
 
-export default function Hero() {
+function Line({ children, delay, className = "" }) {
   return (
-    <section className="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6">
-      <p className="font-mono text-sm text-accent">~/yuvraj $ whoami</p>
+    <span className="block overflow-hidden pb-[0.08em]">
+      <span
+        className={`block motion-safe:animate-rise ${className}`}
+        style={{ animationDelay: `${delay}ms` }}
+      >
+        {children}
+      </span>
+    </span>
+  );
+}
 
-      <h1 className="mt-4 text-5xl font-semibold tracking-tight text-fg sm:text-6xl">
-        {profile.name}
-        <span
-          aria-hidden="true"
-          className="ml-2 inline-block h-[0.8em] w-[0.4em] translate-y-[0.08em] bg-accent motion-safe:animate-blink"
-        />
-      </h1>
+export default function Hero() {
+  function moveSpotlight(event) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    event.currentTarget.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+    event.currentTarget.style.setProperty("--my", `${event.clientY - rect.top}px`);
+  }
 
-      <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-        {profile.tagline}
-      </p>
+  const [first, second] = profile.headline;
 
-      <div className="mt-10 flex flex-wrap gap-4 font-mono text-sm">
-        <a
-          href="#projects"
-          className="rounded-md border border-accent bg-accent/5 px-4 py-2 text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-accent/15"
+  return (
+    <section
+      onPointerMove={moveSpotlight}
+      className="relative flex min-h-screen flex-col overflow-hidden pt-24"
+      style={{
+        backgroundImage:
+          "radial-gradient(550px circle at var(--mx, 70%) var(--my, 40%), color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%)",
+      }}
+    >
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6">
+        <div
+          className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-muted motion-safe:animate-fade sm:text-sm"
+          style={{ animationDelay: "200ms" }}
         >
-          view projects →
-        </a>
-        <a
-          href={profile.cv}
-          className="rounded-md border border-line bg-card px-4 py-2 text-body transition duration-200 hover:-translate-y-0.5 hover:border-subtle hover:bg-card-hover hover:text-fg"
+          <span className="text-accent">{`{ ${profile.role.toUpperCase()} }`}</span>
+          <span className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-accent motion-safe:animate-ping-slow" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            {profile.status} · {profile.location}
+          </span>
+        </div>
+
+        <h1 className="my-auto py-12 font-semibold leading-[0.9] tracking-[-0.05em] text-fg [font-size:clamp(3.75rem,14vw,12rem)]">
+          <Line delay={300}>{first}</Line>
+          <Line delay={450} className="pl-[0.6em]">
+            <span className="font-light text-accent">&amp;</span> {second}
+            <span
+              aria-hidden="true"
+              className="ml-[0.08em] inline-block h-[0.7em] w-[0.08em] translate-y-[0.04em] bg-accent motion-safe:animate-blink"
+            />
+          </Line>
+        </h1>
+
+        <div
+          className="grid gap-8 pb-10 motion-safe:animate-fade sm:grid-cols-[1fr_auto] sm:items-end"
+          style={{ animationDelay: "700ms" }}
         >
-          download cv
-        </a>
+          <div>
+            <p className="max-w-md text-lg leading-relaxed text-muted">
+              I'm <span className="text-fg">{profile.name}</span>. {profile.tagline}
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3 font-mono text-sm">
+              <a
+                href="#projects"
+                className="rounded-md border border-accent bg-accent/5 px-4 py-2 text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-accent/15"
+              >
+                view projects →
+              </a>
+              <a
+                href={profile.cv}
+                className="rounded-md border border-line bg-card px-4 py-2 text-body transition duration-200 hover:-translate-y-0.5 hover:border-subtle hover:bg-card-hover hover:text-fg"
+              >
+                download cv
+              </a>
+            </div>
+          </div>
+          <a
+            href="#about"
+            className="group hidden items-center gap-3 font-mono text-xs text-muted transition-colors hover:text-accent sm:flex"
+          >
+            {"{ SCROLL }"}
+            <span className="inline-block transition-transform group-hover:translate-y-1">↓</span>
+          </a>
+        </div>
       </div>
+
+      <Marquee items={profile.marquee} />
     </section>
+  );
+}
+
+function Marquee({ items }) {
+  const row = [...items, ...items];
+  return (
+    <div
+      aria-hidden="true"
+      className="border-y border-line/70 bg-bg/40 py-4 backdrop-blur-sm [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+    >
+      <div className="flex w-max motion-safe:animate-marquee hover:[animation-play-state:paused]">
+        {[0, 1].map((copy) => (
+          <div key={copy} className="flex shrink-0">
+            {row.map((item, i) => (
+              <span
+                key={`${copy}-${i}`}
+                className="flex items-center gap-8 pr-8 font-mono text-sm uppercase tracking-widest text-muted"
+              >
+                {item}
+                <span className="text-accent">✦</span>
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

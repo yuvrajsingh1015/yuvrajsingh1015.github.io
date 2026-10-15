@@ -6,6 +6,11 @@ export const profile = {
   github: "https://github.com/yuvrajsingh1015",
   linkedin: "https://www.linkedin.com/in/yuvraj-singh-613b87358/",
   cv: "/cv.pdf",
+  role: "Software & Embedded Systems",
+  location: "Saarbrücken, DE",
+  status: "Open to working student roles",
+  headline: ["Systems", "Software"],
+  marquee: ["Embedded Systems", "Software Engineering", "Software Architecture", "Compilers", "Saarland University"],
 };
 
 export const about = {
