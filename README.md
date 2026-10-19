@@ -1,16 +1,49 @@
-# React + Vite
+# yuvrajsingh.de
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Source code of my personal portfolio site, live at **[yuvrajsingh.de](https://yuvrajsingh.de)**.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- [React](https://react.dev) + [Vite](https://vite.dev)
+- [Tailwind CSS v4](https://tailwindcss.com) via `@tailwindcss/vite`
+- Inter and JetBrains Mono, self-hosted with [Fontsource](https://fontsource.org) (no requests to Google Fonts)
+- ESLint
+- Deployed to GitHub Pages with GitHub Actions
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Dark and light theme, with the choice remembered
+- Animated oscilloscope wave in the hero, drawn on a canvas
+- Scroll-based reveal animations
+- Contact form that validates input and opens the visitor's mail app (no backend)
+- Responsive layout
 
-## Expanding the ESLint configuration
+## Project structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+  data.js        all site content: profile, about, skills, projects
+  App.jsx        page layout
+  index.css      theme colours (CSS variables) and global styles
+  components/    one file per section (Hero, About, Skills, Projects, Contact, ...)
+public/          static files served as is (favicon, CV)
+```
+
+To change text or add a project, edit `src/data.js`.
+
+## Run locally
+
+Requires Node.js 22 or newer.
+
+```bash
+npm install
+npm run dev       # start the dev server
+npm run lint      # check the code
+npm run build     # production build into dist/
+npm run preview   # serve the production build
+```
+
+## Deployment
+
+Every push to `main` builds the site and publishes it to GitHub Pages
+(`.github/workflows`). The custom domain points to GitHub Pages via DNS.
