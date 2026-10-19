@@ -25,15 +25,15 @@ src/
   data.js        all site content: profile, about, skills, projects
   App.jsx        page layout
   index.css      theme colours (CSS variables) and global styles
-  components/    one file per section (Hero, About, Skills, Projects, Contact, ...)
-public/          static files served as is (favicon, CV)
+  components/    one file per section (Hero, About, Projects, Contact, ...)
+public/          static files served as is (favicon, cv.pdf)
 ```
 
 To change text or add a project, edit `src/data.js`.
 
 ## Run locally
 
-Requires Node.js 22 or newer.
+Requires Node.js 22.12 or newer.
 
 ```bash
 npm install
