@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Page not found · Yuvraj Singh</title>
+    <style>
+      :root {
+        --bg: #0b0c0e;
+        --fg: #fafafa;
+        --muted: #a1a1aa;
+        --line: #27272a;
+        --accent: #2dd4bf;
+        --dot: rgb(255 255 255 / 0.1);
+        color-scheme: dark;
+      }
+      html.light {
+        --bg: #f7f7f8;
+        --fg: #18181b;
+        --muted: #52525b;
+        --line: #e4e4e7;
+        --accent: #0d9488;
+        --dot: rgb(0 0 0 / 0.11);
+        color-scheme: light;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: var(--bg) radial-gradient(var(--dot) 1px, transparent 1px);
+        background-size: 22px 22px;
+        color: var(--muted);
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+      }
+      main { width: 100%; max-width: 560px; }
+      .prompt { color: var(--accent); font-size: 14px; }
+      h1 {
+        margin: 16px 0 8px;
+        color: var(--fg);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        font-size: clamp(56px, 16vw, 112px);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+      p { margin: 0 0 32px; font-size: 14px; line-height: 1.6; }
+      a {
+        display: inline-block;
+        padding: 8px 16px;
+        border: 1px solid var(--accent);
+        border-radius: 6px;
+        color: var(--accent);
+        font-size: 14px;
+        text-decoration: none;
+      }
+      a:hover { background: color-mix(in srgb, var(--accent) 15%, transparent); }
+      a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    </style>
+    <script>
+      try {
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.classList.add("light");
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <main>
+      <div class="prompt">~/yuvraj $ cd <span id="path">/that-page</span></div>
+      <h1>404</h1>
+      <p>cd: no such file or directory. This page doesn't exist or was moved.</p>
+      <a href="/">← back home</a>
+    </main>
+    <script>
+      document.getElementById("path").textContent = location.pathname;
+    </script>
+  </body>
+</html>
