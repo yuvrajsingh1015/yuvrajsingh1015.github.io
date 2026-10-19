@@ -2,6 +2,8 @@
 
 Source code of my personal portfolio site, live at **[yuvrajsingh.de](https://yuvrajsingh.de)**.
 
+![Screenshot of yuvrajsingh.de](.github/screenshot.png)
+
 ## Stack
 
 - [React](https://react.dev) + [Vite](https://vite.dev)
@@ -37,10 +39,7 @@ Requires Node.js 22.12 or newer.
 
 ```bash
 npm install
-npm run dev       # start the dev server
-npm run lint      # check the code
-npm run build     # production build into dist/
-npm run preview   # serve the production build
+npm run dev
 ```
 
 ## Deployment
