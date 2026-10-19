@@ -106,7 +106,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-24">
-      <SectionHeading number="04" label="contact" title="Get in touch" />
+      <SectionHeading number="03" label="contact" title="Get in touch" />
 
       <Reveal className="grid gap-10 md:grid-cols-[2fr_3fr]">
         <div>

@@ -1,4 +1,4 @@
-import { about } from "../data";
+import { about, skills } from "../data";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
@@ -24,7 +24,7 @@ export default function About() {
           </Reveal>
         </div>
 
-        <Reveal delay={240}>
+        <Reveal delay={240} className="space-y-6">
           <div className="rounded-lg border border-line bg-card p-6 font-mono text-sm">
             <p className="text-accent">$ cat profile</p>
             <dl className="mt-5 divide-y divide-line">
@@ -32,6 +32,27 @@ export default function About() {
                 <div key={key} className="grid grid-cols-[7rem_1fr] gap-4 py-3">
                   <dt className="text-subtle">{key}</dt>
                   <dd className="text-body">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="rounded-lg border border-line bg-card p-6 font-mono text-sm">
+            <p className="text-accent">$ ls skills/</p>
+            <dl className="mt-5 space-y-4">
+              {skills.map(({ group, items }) => (
+                <div key={group}>
+                  <dt className="text-subtle">{group}/</dt>
+                  <dd className="mt-2 flex flex-wrap gap-1.5">
+                    {items.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded border border-line px-2 py-0.5 text-xs text-body transition-colors hover:border-accent/60 hover:text-accent"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </dd>
                 </div>
               ))}
             </dl>

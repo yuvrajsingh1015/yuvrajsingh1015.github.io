@@ -1,6 +1,6 @@
 import ThemeToggle from "./ThemeToggle";
 
-const links = ["about", "skills", "projects", "contact"];
+const links = ["about", "projects", "contact"];
 
 export default function Navbar() {
   return (

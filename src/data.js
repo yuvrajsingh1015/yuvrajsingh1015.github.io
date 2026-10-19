@@ -28,34 +28,25 @@ export const about = {
 
 export const skills = [
   {
-    group: "Languages",
+    group: "languages",
     items: [
       "Java",
+      "Rust",
       "Kotlin",
-      "C",
       "Python",
-      "Julia",
-      "OCaml",
+      "C",
       "SQL",
-      "MIPS Assembly",
+      "JavaScript",
+      "TypeScript",
     ],
   },
   {
-    group: "Web & AI",
-    items: ["Django", "Streamlit", "RAG", "Embeddings", "FAISS", "OpenAI API"],
+    group: "web",
+    items: ["React", "Tailwind CSS", "Streamlit", "Django + REST Framework"],
   },
   {
-    group: "Tools",
-    items: [
-      "Git",
-      "GitLab",
-      "Gradle",
-      "Docker",
-      "Vagrant",
-      "VirtualBox",
-      "Linux",
-      "macOS",
-    ],
+    group: "tools",
+    items: ["Git", "GitLab CI", "GitHub Actions", "JUnit", "Mockito", "detekt"],
   },
 ];
 
