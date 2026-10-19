@@ -21,7 +21,6 @@ export const about = {
   facts: [
     ["studying", "B.Sc. Computer Science"],
     ["university", "Saarland University"],
-    ["progress", "138 / 180 CP"],
     ["based in", "Saarbrücken"],
     ["languages", "German C1 · English C1"],
   ],
