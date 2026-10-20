@@ -80,9 +80,45 @@ body {
   background-size: 22px 22px;
 }
 
+/* teal dot on the "j" in the hero name: a teal copy of the letter, cropped to its dot */
+.j-dot {
+  position: relative;
+}
+.j-dot::after {
+  content: "j";
+  position: absolute;
+  inset: 0;
+  line-height: normal;
+  color: var(--accent);
+  clip-path: inset(0 0 67% 0);
+  pointer-events: none;
+}
+
+/* project card a skill link points to */
+article.is-target {
+  border-color: var(--accent);
+}
+
+/* About, Projects and Contact slide over the pinned hero like a sheet */
+.sheet {
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-top: 1px solid var(--line);
+  border-radius: 1.5rem 1.5rem 0 0;
+  box-shadow: 0 -24px 60px rgb(0 0 0 / 0.35);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheet {
+    border-top: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
 .reveal {
   opacity: 0;
-  transform: translateY(56px);
+  transform: translateY(56px) scale(0.98);
   transition:
     opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
     transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -91,12 +127,18 @@ body {
   opacity: 1;
   transform: none;
 }
+.reveal.is-past {
+  opacity: 0;
+  transform: translateY(-32px) scale(0.98);
+  transition-duration: 0.6s;
+}
 .reveal .reveal-line {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s;
 }
-.reveal.is-visible .reveal-line {
+.reveal.is-visible .reveal-line,
+.reveal.is-past .reveal-line {
   transform: scaleX(1);
 }
 .reveal .reveal-title {
@@ -104,11 +146,15 @@ body {
   transform: translateY(105%);
   transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s;
 }
-.reveal.is-visible .reveal-title {
+.reveal.is-visible .reveal-title,
+.reveal.is-past .reveal-title {
   transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .reveal,
   .reveal .reveal-line,
   .reveal .reveal-title {

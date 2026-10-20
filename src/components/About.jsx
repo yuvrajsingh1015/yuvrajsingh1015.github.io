@@ -1,6 +1,7 @@
 import { about, skills } from "../data";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import SkillChip from "./SkillChip";
 
 export default function About() {
   return (
@@ -45,12 +46,7 @@ export default function About() {
                   <dt className="text-subtle">{group}/</dt>
                   <dd className="mt-2 flex flex-wrap gap-1.5">
                     {items.map((skill) => (
-                      <span
-                        key={skill}
-                        className="rounded border border-line px-2 py-0.5 text-xs text-body transition-colors hover:border-accent/60 hover:text-accent"
-                      >
-                        {skill}
-                      </span>
+                      <SkillChip key={skill.name} {...skill} />
                     ))}
                   </dd>
                 </div>

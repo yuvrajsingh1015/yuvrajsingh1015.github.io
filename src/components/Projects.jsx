@@ -1,4 +1,4 @@
-import { profile, projects } from "../data";
+import { profile, projectId, projects } from "../data";
 import { GitHubIcon } from "./Contact";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
@@ -11,8 +11,13 @@ export default function Projects() {
       <div className="grid gap-4 sm:grid-cols-2">
         {projects.map((project, i) => (
           <Reveal key={project.title} delay={(i % 2) * 150}>
-            <article className="flex h-full flex-col rounded-lg border border-line bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60 hover:bg-card-hover">
-              <h3 className="text-lg font-semibold text-fg">{project.title}</h3>
+            <article
+              id={projectId(project.title)}
+              className="group flex h-full flex-col rounded-lg border border-line bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-accent/60 hover:bg-card-hover"
+            >
+              <h3 className="text-lg font-semibold text-fg transition-colors duration-200 group-hover:text-accent">
+                {project.title}
+              </h3>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
                 {project.description}
               </p>

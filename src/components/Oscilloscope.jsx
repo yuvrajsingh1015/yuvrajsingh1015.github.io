@@ -76,9 +76,14 @@ export default function Oscilloscope() {
       ctx.globalAlpha = 1;
     }
 
+    // the hero stays pinned under the page, so stop once it is fully covered
+    function covered() {
+      return window.scrollY >= height;
+    }
+
     function loop(now) {
       frame = 0;
-      if (!visible) return;
+      if (!visible || covered()) return;
       draw((now - start) / 1000);
       frame = requestAnimationFrame(loop);
     }
@@ -93,6 +98,12 @@ export default function Oscilloscope() {
     });
     visibilityObserver.observe(canvas);
 
+    function onScroll() {
+      if (visible && !reduceMotion && !frame && !covered())
+        frame = requestAnimationFrame(loop);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+
     // redraw once when the theme changes (matters for reduced motion, where nothing loops)
     const themeObserver = new MutationObserver(() =>
       draw(reduceMotion ? 0 : (performance.now() - start) / 1000),
@@ -104,6 +115,7 @@ export default function Oscilloscope() {
 
     return () => {
       cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
       resizeObserver.disconnect();
       visibilityObserver.disconnect();
       themeObserver.disconnect();

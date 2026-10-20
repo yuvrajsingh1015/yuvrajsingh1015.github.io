@@ -13,9 +13,11 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Projects />
-        <Contact />
+        <div className="sheet relative z-10">
+          <About />
+          <Projects />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </>

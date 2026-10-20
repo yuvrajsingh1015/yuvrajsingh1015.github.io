@@ -26,27 +26,52 @@ export const about = {
   ],
 };
 
+// evidence: where each skill was used; names matching a project title link to its card
 export const skills = [
   {
     group: "languages",
     items: [
-      "Java",
-      "Rust",
-      "Kotlin",
-      "Python",
-      "C",
-      "SQL",
-      "JavaScript",
-      "TypeScript",
+      {
+        name: "Java",
+        evidence: ["TinyC Compiler", "university programming projects"],
+      },
+      {
+        name: "Rust",
+        evidence: ["concurrency course project (train network simulation)"],
+      },
+      { name: "Kotlin", evidence: ["Saar la Carte"] },
+      { name: "Python", evidence: ["CodeRAG", "Fame"] },
+      { name: "C", evidence: ["systems programming projects at university"] },
+      { name: "SQL", evidence: ["Fame", "Big Data Engineering course"] },
+      { name: "JavaScript", evidence: ["this website"] },
+      {
+        name: "TypeScript",
+        evidence: ["Fine Print (contract clause highlighter, in progress)"],
+      },
     ],
   },
   {
     group: "web",
-    items: ["React", "Tailwind CSS", "Streamlit", "Django + REST Framework"],
+    items: [
+      { name: "React", evidence: ["this website"] },
+      { name: "Tailwind CSS", evidence: ["this website"] },
+      { name: "Streamlit", evidence: ["CodeRAG"] },
+      { name: "Django + REST Framework", evidence: ["Fame"] },
+    ],
   },
   {
     group: "tools",
-    items: ["Git", "GitLab CI", "GitHub Actions", "JUnit", "Mockito", "detekt"],
+    items: [
+      { name: "Git", evidence: ["every project"] },
+      {
+        name: "GitLab CI",
+        evidence: ["Saar la Carte", "Rust concurrency project"],
+      },
+      { name: "GitHub Actions", evidence: ["this website's deployment"] },
+      { name: "JUnit", evidence: ["Saar la Carte"] },
+      { name: "Mockito", evidence: ["Saar la Carte"] },
+      { name: "detekt", evidence: ["Saar la Carte"] },
+    ],
   },
 ];
 
@@ -80,3 +105,8 @@ export const projects = [
     github: null, // TODO
   },
 ];
+
+// anchor id of a project card, e.g. "project-saar-la-carte"
+export function projectId(title) {
+  return `project-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+}

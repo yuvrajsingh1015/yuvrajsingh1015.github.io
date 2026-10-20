@@ -55,27 +55,35 @@ export default function Hero() {
   }
 
   const [first, second] = profile.headline;
+  const jAt = first.lastIndexOf("j");
 
   return (
     <section
       ref={heroRef}
       onPointerMove={moveSpotlight}
-      className="relative flex min-h-screen flex-col overflow-hidden pt-24"
+      className="relative flex min-h-screen flex-col overflow-hidden pt-24 motion-safe:sticky motion-safe:top-0"
       style={{
         backgroundImage:
           "radial-gradient(320px circle at var(--mx, 70%) var(--my, 40%), color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%)",
       }}
     >
-      <Oscilloscope />
+      <div
+        className="absolute inset-0"
+        style={{ opacity: "calc(1 - var(--p, 0) * 1.2)" }}
+      >
+        <Oscilloscope />
+      </div>
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col px-6">
-        <div
-          className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-muted motion-safe:animate-fade sm:text-sm"
-          style={{ animationDelay: "200ms" }}
-        >
-          <span>
-            <span className="text-accent">~/yuvraj $ whoami</span>
-          </span>
-          <span className="flex items-center gap-2">{profile.location}</span>
+        <div style={{ opacity: "calc(1 - var(--p, 0) * 2.5)" }}>
+          <div
+            className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-muted motion-safe:animate-fade sm:text-sm"
+            style={{ animationDelay: "200ms" }}
+          >
+            <span>
+              <span className="text-accent">~/yuvraj $ whoami</span>
+            </span>
+            <span className="flex items-center gap-2">{profile.location}</span>
+          </div>
         </div>
 
         <div
@@ -87,7 +95,17 @@ export default function Hero() {
           }}
         >
           <h1 className="py-12 font-semibold leading-[0.9] tracking-[-0.05em] text-fg [font-size:clamp(3.75rem,14vw,12rem)]">
-            <Line delay={300}>{first}</Line>
+            <Line delay={300}>
+              {jAt === -1 ? (
+                first
+              ) : (
+                <>
+                  {first.slice(0, jAt)}
+                  <span className="j-dot">j</span>
+                  {first.slice(jAt + 1)}
+                </>
+              )}
+            </Line>
             <Line delay={450} className="pl-[0.6em]">
               {second}
               <span
