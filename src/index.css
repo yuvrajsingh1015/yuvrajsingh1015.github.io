@@ -80,20 +80,6 @@ body {
   background-size: 22px 22px;
 }
 
-/* teal dot on the "j" in the hero name: a teal copy of the letter, cropped to its dot */
-.j-dot {
-  position: relative;
-}
-.j-dot::after {
-  content: "j";
-  position: absolute;
-  inset: 0;
-  line-height: normal;
-  color: var(--accent);
-  clip-path: inset(0 0 67% 0);
-  pointer-events: none;
-}
-
 /* project card a skill link points to */
 article.is-target {
   border-color: var(--accent);

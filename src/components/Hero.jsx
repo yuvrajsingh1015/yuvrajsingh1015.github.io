@@ -55,7 +55,6 @@ export default function Hero() {
   }
 
   const [first, second] = profile.headline;
-  const jAt = first.lastIndexOf("j");
 
   return (
     <section
@@ -95,17 +94,7 @@ export default function Hero() {
           }}
         >
           <h1 className="py-12 font-semibold leading-[0.9] tracking-[-0.05em] text-fg [font-size:clamp(3.75rem,14vw,12rem)]">
-            <Line delay={300}>
-              {jAt === -1 ? (
-                first
-              ) : (
-                <>
-                  {first.slice(0, jAt)}
-                  <span className="j-dot">j</span>
-                  {first.slice(jAt + 1)}
-                </>
-              )}
-            </Line>
+            <Line delay={300}>{first}</Line>
             <Line delay={450} className="pl-[0.6em]">
               {second}
               <span
