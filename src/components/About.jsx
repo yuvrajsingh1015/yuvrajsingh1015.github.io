@@ -5,7 +5,7 @@ import SkillChip from "./SkillChip";
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto max-w-6xl px-6 py-24">
+    <section id="about" className="snap-section mx-auto max-w-6xl px-6 py-24">
       <SectionHeading number="01" label="about" title="About me" />
 
       <div className="grid gap-12 md:grid-cols-[3fr_2fr] md:gap-16">

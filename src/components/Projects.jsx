@@ -5,7 +5,7 @@ import Reveal from "./Reveal";
 
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-6 py-24">
+    <section id="projects" className="snap-section mx-auto max-w-6xl px-6 py-24">
       <SectionHeading number="02" label="projects" title="Projects" />
 
       <div className="grid gap-4 sm:grid-cols-2">
