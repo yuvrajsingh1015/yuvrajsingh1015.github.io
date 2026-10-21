@@ -15,10 +15,16 @@ export default function Reveal({
     if (!el) return undefined;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setState("shown");
-        else if (entry.boundingClientRect.top < 0) setState("past");
+        if (entry.isIntersecting) {
+          setState("shown");
+          return;
+        }
+        // which edge it left by; judged from its centre so the exit
+        // transform can't move it back into view and make it flicker
+        const box = entry.boundingClientRect;
+        const leftAtTop = box.top + box.height / 2 < window.innerHeight / 2;
         // left at the bottom (scrolling back up): reset so it animates in again
-        else setState("hidden");
+        setState(leftAtTop ? "past" : "hidden");
       },
       { threshold: 0.15, rootMargin: "-12% 0px -8% 0px" },
     );
@@ -29,13 +35,16 @@ export default function Reveal({
   const stateClass =
     state === "shown" ? "is-visible" : state === "past" ? "is-past" : "";
 
+  // the observed wrapper never moves; only the inner element is transformed,
+  // so the animation can't push it back across the observer's edge
   return (
-    <Tag
-      ref={ref}
-      className={`reveal ${stateClass} ${className}`}
-      style={{ transitionDelay: state === "shown" ? `${delay}ms` : "0ms" }}
-    >
-      {children}
-    </Tag>
+    <div ref={ref}>
+      <Tag
+        className={`reveal h-full ${stateClass} ${className}`}
+        style={{ transitionDelay: state === "shown" ? `${delay}ms` : "0ms" }}
+      >
+        {children}
+      </Tag>
+    </div>
   );
 }
