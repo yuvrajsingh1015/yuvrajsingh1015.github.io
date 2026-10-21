@@ -62,7 +62,8 @@ export default function SkillChip({ name, evidence }) {
     };
   }, [open]);
 
-  const chipClass = "rounded border px-2 py-0.5 text-xs transition-colors";
+  const chipClass =
+    "rounded-xs border px-2 py-0.5 text-xs leading-[14px] transition-colors";
 
   if (!evidence.length) {
     return <span className={`${chipClass} border-line text-body`}>{name}</span>;
@@ -71,7 +72,7 @@ export default function SkillChip({ name, evidence }) {
   return (
     <span
       ref={wrapRef}
-      className="relative"
+      className="relative flex"
       onPointerEnter={(event) => {
         if (event.pointerType === "mouse") setOpen(true);
       }}
@@ -114,7 +115,7 @@ export default function SkillChip({ name, evidence }) {
           <span
             id={tipId}
             role="tooltip"
-            className="block w-max max-w-[min(16rem,calc(100vw-1.5rem))] rounded-md border border-line bg-bg/95 p-3 text-xs shadow-lg backdrop-blur motion-safe:animate-fade"
+            className="block w-max max-w-[min(16rem,calc(100vw-1.5rem))] rounded-sm border border-line bg-bg/95 p-3 text-xs shadow-lg backdrop-blur motion-safe:animate-fade"
             style={{ animationDuration: "0.2s" }}
           >
             <span className="block text-accent">used in</span>

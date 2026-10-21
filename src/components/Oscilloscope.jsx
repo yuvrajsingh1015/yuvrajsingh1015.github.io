@@ -36,15 +36,17 @@ export default function Oscilloscope() {
     function draw(t) {
       const styles = getComputedStyle(document.documentElement);
       const accent = styles.getPropertyValue("--accent").trim() || "#2dd4bf";
-      const line = styles.getPropertyValue("--line").trim() || "#27272a";
+      const grid =
+        styles.getPropertyValue("--grid").trim() || "rgb(82 82 91 / 0.5)";
 
       ctx.clearRect(0, 0, width, height);
 
-      ctx.globalAlpha = 0.5;
-      ctx.strokeStyle = line;
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = grid;
       ctx.lineWidth = 1;
       ctx.beginPath();
-      for (let x = 0; x <= width; x += GRID) {
+      // vertical lines centred on the page, like the background dots
+      for (let x = (width / 2) % GRID; x <= width; x += GRID) {
         ctx.moveTo(x + 0.5, 0);
         ctx.lineTo(x + 0.5, height);
       }

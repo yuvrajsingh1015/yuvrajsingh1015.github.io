@@ -2,6 +2,7 @@ import { useState } from "react";
 import { profile } from "../data";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import TypedPrompt from "./TypedPrompt";
 
 const iconProps = {
   width: 20,
@@ -68,7 +69,7 @@ function validate(form) {
 }
 
 const fieldClass =
-  "w-full rounded-md border border-line bg-bg/60 px-3 py-2 text-sm text-fg placeholder:text-subtle outline-none transition-colors focus:border-accent";
+  "w-full rounded-sm border border-line bg-bg/60 px-3 py-[11px] text-sm leading-6 text-fg placeholder:text-subtle outline-none transition-colors focus:border-accent";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -108,34 +109,34 @@ export default function Contact() {
     <section id="contact" className="snap-section mx-auto max-w-6xl px-6 py-24">
       <SectionHeading number="03" label="contact" title="Get in touch" />
 
-      <Reveal className="grid gap-10 md:grid-cols-[2fr_3fr]">
+      <Reveal className="grid gap-12 md:grid-cols-[2fr_3fr]">
         <div>
-          <p className="text-lg leading-relaxed text-muted">
+          <p className="text-base leading-6 text-muted">
             I'm looking for a working student position in software development
             or IT. Send me a message or reach out directly.
           </p>
 
-          <ul className="mt-8 space-y-3">
+          <ul className="mt-6 space-y-6">
             {channels.map(({ label, text, href, Icon }) => (
               <li key={label}>
                 <a
                   href={href}
                   target={label === "email" ? undefined : "_blank"}
                   rel="noreferrer"
-                  className="group flex items-center gap-4 rounded-lg border border-line bg-card p-4 transition duration-200 hover:-translate-y-0.5 hover:border-accent/60 hover:bg-card-hover"
+                  className="group ticks flex items-center gap-4 rounded-sm bg-card p-6 ring-1 ring-line ring-inset transition duration-200 hover:-translate-y-0.5 hover:bg-card-hover"
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-line text-muted transition-colors group-hover:border-accent/60 group-hover:text-accent">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm border border-line text-muted transition-colors group-hover:border-accent/60 group-hover:text-accent">
                     <Icon />
                   </span>
                   <span className="min-w-0">
-                    <span className="block font-mono text-xs text-subtle">
+                    <span className="block font-mono text-xs leading-6 text-subtle">
                       {label}
                     </span>
-                    <span className="block truncate text-sm text-body group-hover:text-fg">
+                    <span className="block truncate text-sm leading-6 text-body group-hover:text-fg">
                       {text}
                     </span>
                   </span>
-                  <span className="ml-auto font-mono text-sm text-subtle transition-transform group-hover:translate-x-1 group-hover:text-accent">
+                  <span className="ml-auto self-end font-mono text-sm leading-6 text-subtle transition-transform group-hover:translate-x-1 group-hover:text-accent">
                     →
                   </span>
                 </a>
@@ -146,7 +147,7 @@ export default function Contact() {
           <button
             type="button"
             onClick={copyEmail}
-            className="mt-4 font-mono text-xs text-muted transition-colors hover:text-accent"
+            className="mt-6 font-mono text-xs leading-6 text-muted transition-colors hover:text-accent"
             aria-live="polite"
           >
             {copied ? "copied ✓" : "copy email address"}
@@ -156,13 +157,16 @@ export default function Contact() {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="rounded-lg border border-line bg-card p-6"
+          className="rounded-sm bg-card p-6 ring-1 ring-line ring-inset"
         >
-          <p className="font-mono text-sm text-accent">$ send-message</p>
+          <TypedPrompt
+            className="font-mono text-sm leading-6 text-accent"
+            text="$ send-message"
+          />
 
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+          <div className="mt-6 grid gap-x-4 gap-y-9 sm:grid-cols-2">
             <label className="block">
-              <span className="mb-1 block font-mono text-xs text-subtle">
+              <span className="mb-3 block font-mono text-xs leading-6 text-subtle">
                 name
               </span>
               <input
@@ -182,7 +186,7 @@ export default function Contact() {
             </label>
 
             <label className="block">
-              <span className="mb-1 block font-mono text-xs text-subtle">
+              <span className="mb-3 block font-mono text-xs leading-6 text-subtle">
                 email
               </span>
               <input
@@ -202,8 +206,8 @@ export default function Contact() {
             </label>
           </div>
 
-          <label className="mt-4 block">
-            <span className="mb-1 block font-mono text-xs text-subtle">
+          <label className="mt-9 block">
+            <span className="mb-3 block font-mono text-xs leading-6 text-subtle">
               message
             </span>
             <textarea
@@ -211,7 +215,7 @@ export default function Contact() {
               value={form.message}
               onChange={(e) => update("message", e.target.value)}
               placeholder="Hi Yuvraj, we have a working student position…"
-              className={`${fieldClass} resize-y`}
+              className={`${fieldClass} h-36 resize-y`}
               aria-invalid={Boolean(errors.message)}
             />
             {errors.message && (
@@ -221,14 +225,14 @@ export default function Contact() {
             )}
           </label>
 
-          <div className="mt-5 flex flex-wrap items-center gap-4">
+          <div className="mt-[18px] flex flex-wrap items-center gap-x-4 gap-y-3">
             <button
               type="submit"
-              className="rounded-md border border-accent bg-accent/5 px-4 py-2 font-mono text-sm text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-accent/15"
+              className="h-12 rounded-sm border border-accent bg-accent/5 px-4 font-mono text-sm text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-accent/15"
             >
               send message →
             </button>
-            <span className="text-xs text-subtle" aria-live="polite">
+            <span className="text-xs leading-6 text-subtle" aria-live="polite">
               {sent
                 ? "Your email app should open now."
                 : "Opens your email app, pre-filled."}

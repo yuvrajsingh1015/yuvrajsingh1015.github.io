@@ -107,6 +107,8 @@ export default function useWheelSnap() {
       if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY))
         return;
       event.preventDefault();
+      // the command palette is open: keep the page still
+      if (document.documentElement.classList.contains("palette-open")) return;
 
       const now = performance.now();
       const delta = event.deltaMode === 1 ? event.deltaY * 40 : event.deltaY;

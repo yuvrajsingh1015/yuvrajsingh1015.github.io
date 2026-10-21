@@ -57,6 +57,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
+      data-theme-toggle
       aria-label={light ? "Switch to dark mode" : "Switch to light mode"}
       className="flex items-center text-muted transition-colors hover:text-accent"
     >

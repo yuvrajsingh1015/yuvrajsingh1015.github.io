@@ -1,10 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { openPalette, paletteKey } from "../palette";
 import ThemeToggle from "./ThemeToggle";
 
 const links = ["about", "projects", "contact"];
 
 export default function Navbar() {
   const [active, setActive] = useState(null);
+  const progressRef = useRef(null);
+
+  // thin line under the bar that fills as the page is scrolled
+  useEffect(() => {
+    let frame = 0;
+    function update() {
+      frame = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+      if (progressRef.current)
+        progressRef.current.style.transform = `scaleX(${progress})`;
+    }
+    function onScroll() {
+      if (!frame) frame = requestAnimationFrame(update);
+    }
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   // highlight the section that crosses the middle of the screen
   useEffect(() => {
@@ -67,9 +92,23 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          <button
+            type="button"
+            onClick={openPalette}
+            aria-label={`Open command palette (${paletteKey})`}
+            title="command palette"
+            className="hidden rounded-xs border border-line px-1.5 font-mono text-xs leading-5 text-subtle transition-colors hover:border-accent/60 hover:text-accent sm:block"
+          >
+            {paletteKey}
+          </button>
           <ThemeToggle />
         </div>
       </nav>
+      <span
+        ref={progressRef}
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-accent"
+      />
     </header>
   );
 }

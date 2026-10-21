@@ -3,8 +3,10 @@ import { profile } from "../data";
 import Oscilloscope from "./Oscilloscope";
 
 function Line({ children, delay, className = "" }) {
+  // extra room at the bottom (taken back by the negative margin) so the clip
+  // that hides the rising text doesn't cut off descenders like g and j
   return (
-    <span className="block overflow-hidden pb-[0.08em]">
+    <span className="-mb-[0.14em] block overflow-hidden pb-[0.22em]">
       <span
         className={`block motion-safe:animate-rise ${className}`}
         style={{ animationDelay: `${delay}ms` }}
@@ -13,6 +15,21 @@ function Line({ children, delay, className = "" }) {
       </span>
     </span>
   );
+}
+
+// each letter of the name lights up teal under the mouse;
+// the first letter of each word is set a little larger
+function Letters({ text }) {
+  return [...text].map((letter, i) => (
+    <span
+      key={i}
+      className={
+        i === 0 ? "name-letter mr-[-0.05em] text-[1.1em]" : "name-letter"
+      }
+    >
+      {letter}
+    </span>
+  ));
 }
 
 export default function Hero() {
@@ -94,9 +111,11 @@ export default function Hero() {
           }}
         >
           <h1 className="py-12 font-semibold leading-[0.9] tracking-[-0.05em] text-fg [font-size:clamp(3.75rem,14vw,12rem)]">
-            <Line delay={300}>{first}</Line>
+            <Line delay={300}>
+              <Letters text={first} />
+            </Line>
             <Line delay={450} className="pl-[0.6em]">
-              {second}
+              <Letters text={second} />
               <span
                 aria-hidden="true"
                 className="ml-[0.08em] inline-block h-[0.7em] w-[0.08em] translate-y-[0.04em] bg-accent motion-safe:animate-blink"
@@ -117,13 +136,13 @@ export default function Hero() {
               <div className="mt-6 flex flex-wrap gap-3 font-mono text-sm">
                 <a
                   href="#projects"
-                  className="rounded-md border border-accent bg-accent/5 px-4 py-2 text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-accent/15"
+                  className="rounded-sm border border-accent bg-accent/5 px-4 py-2 text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-accent/15"
                 >
                   view projects →
                 </a>
                 <a
                   href={profile.cv}
-                  className="rounded-md border border-line bg-card px-4 py-2 text-body transition duration-200 hover:-translate-y-0.5 hover:border-subtle hover:bg-card-hover hover:text-fg"
+                  className="rounded-sm border border-line bg-card px-4 py-2 text-body transition duration-200 hover:-translate-y-0.5 hover:border-subtle hover:bg-card-hover hover:text-fg"
                 >
                   download cv
                 </a>

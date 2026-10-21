@@ -9,24 +9,27 @@
   --muted: #a1a1aa;
   --subtle: #71717a;
   --line: #27272a;
-  --card: rgb(24 24 27 / 0.15);
-  --card-hover: rgb(39 39 42 / 0.35);
+  /* solid, so the dot pattern stays outside the boxes */
+  --card: #111214;
+  --card-hover: #16171a;
   --accent: #2dd4bf;
-  --dot: rgb(255 255 255 / 0.1);
+  --dot: rgb(255 255 255 / 0.14);
+  --grid: rgb(82 82 91 / 0.5);
   color-scheme: dark;
 }
 
 html.light {
-  --bg: #f7f7f8;
+  --bg: #ededef;
   --fg: #18181b;
   --body: #3f3f46;
   --muted: #52525b;
   --subtle: #71717a;
-  --line: #e4e4e7;
-  --card: rgb(255 255 255 / 0.35);
-  --card-hover: rgb(255 255 255 / 0.7);
+  --line: #dcdce0;
+  --card: #f5f5f6;
+  --card-hover: #fafafa;
   --accent: #0d9488;
-  --dot: rgb(0 0 0 / 0.11);
+  --dot: rgb(0 0 0 / 0.16);
+  --grid: rgb(113 113 122 / 0.26);
   color-scheme: light;
 }
 
@@ -82,19 +85,91 @@ html {
 body {
   @apply bg-bg text-body font-sans antialiased;
   background-image: radial-gradient(var(--dot) 1px, transparent 1px);
-  background-size: 22px 22px;
+  /* dots every 24px, centred on the page: they line up with the content edge
+     and fall on the hero grid's corners (the grid is every 48px) */
+  background-size: 24px 24px;
+  background-position: 50% -12px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  color: var(--fg);
+}
+
+/* slim scrollbar in the site's colours */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* viewfinder-style corner marks that appear on hover */
+.ticks {
+  position: relative;
+}
+.ticks::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.2s;
+  --t: 10px;
+  background:
+    linear-gradient(var(--accent), var(--accent)) top left / var(--t) 1px,
+    linear-gradient(var(--accent), var(--accent)) top left / 1px var(--t),
+    linear-gradient(var(--accent), var(--accent)) top right / var(--t) 1px,
+    linear-gradient(var(--accent), var(--accent)) top right / 1px var(--t),
+    linear-gradient(var(--accent), var(--accent)) bottom left / var(--t) 1px,
+    linear-gradient(var(--accent), var(--accent)) bottom left / 1px var(--t),
+    linear-gradient(var(--accent), var(--accent)) bottom right / var(--t) 1px,
+    linear-gradient(var(--accent), var(--accent)) bottom right / 1px var(--t);
+  background-repeat: no-repeat;
+}
+.ticks:hover::after,
+.ticks:focus-visible::after,
+.ticks.is-target::after {
+  opacity: 1;
+}
+
+/* the letter of the name under the mouse turns teal */
+.name-letter {
+  transition: color 0.15s;
+}
+.name-letter:hover {
+  color: var(--accent);
 }
 
 /* project card a skill link points to */
-article.is-target {
-  border-color: var(--accent);
+
+/* rows of a fact list: one 24px text line each, a divider halfway down the
+   24px gap between rows, so every line stays on the dot rhythm */
+.rhythm-rows > * {
+  padding-bottom: 24px;
+  background: linear-gradient(var(--line), var(--line)) 0 calc(100% - 12px) /
+    100% 1px no-repeat;
+}
+.rhythm-rows > :last-child {
+  padding-bottom: 0;
+  background: none;
 }
 
 /* About, Projects and Contact slide over the pinned hero like a sheet */
 .sheet {
   background-color: var(--bg);
   background-image: radial-gradient(var(--dot) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-size: 24px 24px;
+  background-position: 50% -12px;
   border-top: 1px solid var(--line);
   border-radius: 1.5rem 1.5rem 0 0;
   box-shadow: 0 -24px 60px rgb(0 0 0 / 0.35);
@@ -155,8 +230,11 @@ article.is-target {
   }
 }
 
-:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 4px;
+/* in the base layer, so a component's own focus style (outline-none) wins */
+@layer base {
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 }

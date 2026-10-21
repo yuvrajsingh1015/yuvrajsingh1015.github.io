@@ -81,28 +81,28 @@ export const projects = [
     description:
       "AI-powered code assistant that makes entire codebases searchable using retrieval-augmented generation, with a FAISS vector index and a Streamlit frontend.",
     tags: ["Python", "FAISS", "OpenAI API", "Streamlit"],
-    github: null, // TODO: repo link
+    github: "https://github.com/yuvrajsingh1015/Codebase-Rag-Chat",
   },
   {
     title: "Saar la Carte",
     description:
       "Restaurant simulation built as a team in the Software Engineering Lab at Saarland University.",
     tags: ["Kotlin", "Gradle", "GitLab"],
-    github: null, // TODO: your part, team size, link if public
+    github: "https://github.com/yuvrajsingh1015/saar-la-carte",
   },
   {
     title: "TinyC Compiler",
     description:
       "Compiler for a subset of C: parser, abstract syntax tree, semantic analysis and code generation to MIPS assembly.",
     tags: ["Java", "MIPS"],
-    github: null, // TODO
+    github: "https://github.com/yuvrajsingh1015/mini-C-compiler",
   },
   {
     title: "Fame",
     description:
       "Facebook-style social network web app with a Django backend and a relational data model.",
     tags: ["Django", "SQL", "HTML"],
-    github: null, // TODO
+    github: null, // no public repo yet
   },
 ];
 

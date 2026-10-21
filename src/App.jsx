@@ -5,10 +5,13 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import CommandPalette from "./components/CommandPalette";
+import useDotRhythm from "./useDotRhythm";
 import useWheelSnap from "./useWheelSnap";
 
 export default function App() {
   useWheelSnap();
+  useDotRhythm();
 
   return (
     <>
@@ -23,6 +26,7 @@ export default function App() {
         </div>
       </main>
       <Footer />
+      <CommandPalette />
     </>
   );
 }
